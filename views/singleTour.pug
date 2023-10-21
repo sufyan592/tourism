@@ -1,0 +1,102 @@
+doctype html
+html(lang='en')
+    head
+        script(src='https://js.stripe.com/v3/')
+        meta(charset='UTF-8')
+        meta(http-equiv='X-UA-Compatible' content='IE-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        title Document
+        link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css' integrity='sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==' crossorigin='anonymous' referrerpolicy='no-referrer')
+        link(rel='stylesheet' href='/css/main.css')
+        link(rel='preconnect' href='https://fonts.googleapis.com')
+        link(rel='preconnect' href='https://fonts.gstatic.com', crossorigin)
+        link(href='https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&family=Poppins:ital,wght@0,300;0,400;1,300;1,400&display=swap' rel='stylesheet')
+    body
+        section.header.login-header
+            .header-wrapper
+                .logo
+                    a(href="/") Sufyan Tourism
+                if user
+                    .header-menu.logedIn
+                        .logount-btn.profile-btn
+                            a.button.logout(href="/login") Logout
+                        .login-profile
+                            a(href="/me")
+                                img(src=`images/${user.photo}`, alt="")
+                                p.profile-btn=user.name.split(' ')[0]
+        section.tour-hero(style=`background-image:linear-gradient(to bottom, #38ef7e6c, #11998e96),
+        url("/images/${tour.coverImg}"); background-size: cover; background-repeat: no-repeat; background-position:center`)
+            .tour-hero-wrapper
+                .tour-hero-content
+                    h1=tour.name
+                .icons
+                    .icon
+                        i.fa-regular.fa-clock
+                        p=tour.duration
+                    .icon
+                        i.fa-solid.fa-location-crosshairs
+                        p location
+        section.tour-description.section-spacing
+            .tour-description-left
+                .tour-fact
+                    h2 Quick Facts
+                    .fact-content
+                        i.fa-regular.fa-calendar
+                        h6 Next Date:
+                        p August 2023
+                    .fact-content
+                        i.fa-solid.fa-sliders
+                        h6 Difficulty:
+                        p=tour.difficulty
+                    .fact-content
+                        i.fa-solid.fa-users
+                        h6 Participants:
+                        p=tour.maxGroupSize
+                    .fact-content
+                        i.fa-regular.fa-star
+                        h6 Rating:
+                        p=`${tour.ratingAvarage}/5`
+                .tour-guide
+                    h2 Your tour Guides
+                    each tourData in tour.guides
+                        .guide-content
+                            img(src=`/images/${tourData.photo}` alt='')
+                            h6=`Tour ${tourData.role}:`
+                            p=tourData.name
+            section.tour-description-right
+                h2 About the tour
+                p=tour.description
+        section.tour-img-gallery
+            .img-gallery-wrapper
+                each tourData in tour.images
+                    img(src=`/images/${tourData}` alt=tour.name)
+        section.tour-review.section-spacing
+            h2 Client Reviews
+            if(tour.reviews.length===0)
+                h4 This tour has no Review.
+            .tour-review-wrapper
+                each review in tour.reviews
+                    .review-content
+                        .review-inner-content
+                            each user in review.user
+                                img(src=`/images/${user.photo}` alt='')
+                                p=user.name
+                        p=review.description
+        section.booking.section-spacing
+            .booking-wrapper
+                .booking-img
+                    h2 For Enjoying with us Booking tour instantly.
+                .booking-link
+                    button.primary-btn.booking-btn(data-tourId=`${user.id}`) Booking Now
+        section.tourism-footer
+            .tourism-footer-wrapper.section-spacing
+                .footer-content
+                    h5 Tourism Importance
+                    p Tourism plays a vital role in the economic development of destinations. It generates income and employment opportunities, encourages infrastructure development, and promotes local businesses. Moreover, it fosters cultural exchange, as tourists often engage with the customs, traditions, and lifestyles of the communities they visit.
+                .footer-content
+                    h5 About Us
+                    p As the tourism industry continues to evolve, sustainability and responsible tourism practices have gained importance. Travelers are increasingly conscious of their environmental and social impact and seek eco-friendly and culturally sensitive experiences. Many destinations and businesses are making efforts to minimize their environmental footprint and preserve their cultural heritage for future generations.
+        section.footer-bottom
+            p Sufyan Tourism @2023. All Rights are Reserved.
+    script(src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')
+    script(src='/js/userCheckout.js')

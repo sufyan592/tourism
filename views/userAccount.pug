@@ -1,0 +1,94 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        meta(http-equiv='X-UA-Compatible' content='IE=edge')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css' integrity='sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==' crossorigin='anonymous' referrerpolicy='no-referrer')
+        link(rel='stylesheet' href='css/main.css')
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&family=Poppins:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+        title Document
+    body
+
+        section.header.login-header
+            .header-wrapper
+                .logo
+                    a(href="/") Sufyan Tourism
+                if user       
+                    .header-menu.logedIn
+                        .logount-btn.profile-btn 
+                            a.button.logout(href="/login") Logout
+                        .login-profile 
+                            a(href="/me") 
+                                img(src=`images/${user.photo}` alt="")
+                                p.profile-btn=user.name.split(' ')[0]
+
+        section.user-account
+            .user-account-wrapper
+                .user-account-left
+                    .user-account-content
+                        i.fa-solid.fa-location-crosshairs
+                        h5 Settings
+                    //- .user-account-content
+                    //-     i.fa-solid.fa-location-crosshairs
+                    //-     p My Bookings
+                    //- .user-account-content
+                    //-     i.fa-solid.fa-location-crosshairs
+                    //-     p My Reviews
+                    //- .user-account-content
+                    //-     i.fa-solid.fa-location-crosshairs
+                    //-     p Billings
+                    - if (user.role === 'admin')
+                        .user-admin-account
+                            h3 Admin
+                            .user-admin-account-wrapper
+                                .user-account-content
+                                    i.fa-solid.fa-location-crosshairs
+                                    p Manage Tours
+                                .user-account-content
+                                    i.fa-solid.fa-location-crosshairs
+                                    p Manage Users
+                                .user-account-content
+                                    i.fa-solid.fa-location-crosshairs
+                                    p Manage Reviews
+                                .user-account-content
+                                    i.fa-solid.fa-location-crosshairs
+                                    p Manage Billings
+                .user-account-right
+                    h2 Your Account Settings
+                    form
+                        label(for='name') Name
+                        input.username(type='text', value=user.name, name='name')
+                        label(for='email') Email
+                        input.useremail(type='text', value=user.email, name='email')
+                        .user-photo
+                            img(src=`images/${user.photo}`, alt='')
+                            input.image-update(type='file' accept='image/*' name='photo')
+                        button.user-save-btn.primary-btn Save Settings
+                    // Password Change
+                    .user-password-chng
+                        h2 Password Change
+                        label(for='password') Current Password
+                        input(type='password' placeholder='**********' class='cpassword')
+                        label(for='password') New Password
+                        input(type='password' placeholder='**********' class='npassword')
+                        label(for='password') Confirm New Password
+                        input(type='password' placeholder='**********' class='cnpassword')
+                        a.pass-change.primary-btn(href='#') Save
+
+
+        section.tourism-footer
+            .tourism-footer-wrapper.section-spacing
+                .footer-content
+                    h5 Tourism Importance
+                    p Tourism plays a vital role in the economic development of destinations. It generates income and employment opportunities, encourages infrastructure development, and promotes local businesses. Moreover, it fosters cultural exchange, as tourists often engage with the customs, traditions, and lifestyles of the communities they visit.
+                .footer-content
+                    h5 About Us
+                    p As the tourism industry continues to evolve, sustainability and responsible tourism practices have gained importance. Travelers are increasingly conscious of their environmental and social impact and seek eco-friendly and culturally sensitive experiences. Many destinations and businesses are making efforts to minimize their environmental footprint and preserve their cultural heritage for future generations.
+
+        section.footer-bottom
+            p Sufyan Tourism @2023. All Rights are Reserved.                
+            script(src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')
+            script(src='js/userAccount.js')

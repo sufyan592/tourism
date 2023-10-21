@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css'
+    integrity='sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=='
+    crossorigin='anonymous' referrerpolicy='no-referrer')
+    link(rel='stylesheet' href='css/main.css')
+    <title>Document</title>
+</head>
+
+<body>
+
+    <section class="user-account">
+        <div class="user-account-wrapper">
+            <div class="user-account-left">
+                <div class="user-account-content">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                    <p>Settings</p>
+                </div>
+                <div class="user-account-content">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                    <p>My Bookings</p>
+                </div>
+                <div class="user-account-content">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                    <p>My Reviews</p>
+                </div>
+                <div class="user-account-content">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                    <p>Billings</p>
+                </div>
+
+                <!-- ================ For Admin ============ -->
+                if(user.role==='admin')
+                <div class="user-admin-account">
+                    <h3>Admin</h3>
+                    <div class="user-admin-account-wrapper">
+                        <div class="user-account-content">
+                            <i class="fa-solid fa-location-crosshairs"></i>
+                            <p>Manage Tours</p>
+                        </div>
+                        <div class="user-account-content">
+                            <i class="fa-solid fa-location-crosshairs"></i>
+                            <p>Manage Users</p>
+                        </div>
+                        <div class="user-account-content">
+                            <i class="fa-solid fa-location-crosshairs"></i>
+                            <p>Manage Reviews</p>
+                        </div>
+                        <div class="user-account-content">
+                            <i class="fa-solid fa-location-crosshairs"></i>
+                            <p>Manage Billings</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            <div class="user-account-right">
+                <h1>Your Account Settings</h1>
+                <label for="name">Name</label>
+                input(type="text",value=user.name)
+                //- input (type="text", value=`${user.name}`)
+                <label for="email">Email</label>
+                input(type="text",value=user.email)
+                <div class="user-photo">
+                    img(src=`images/${user.photo}` alt="")
+                    <p>Choose new photo</p>
+                </div>
+                <a href="#" class=" user-save-btn primary-btn">Save Settings</a>
+
+                <!-- ============ Password Change =============== -->
+                <div class="user-password-chng">
+                    <h1>Password Change</h1>
+                    <label for="password">Current Password</label>
+                    <input type="password" placeholder="**********">
+                    <label for="email">New Password</label>
+                    <input type="password" placeholder="**********">
+
+                    <a href="#" class="primary-btn">Save</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
