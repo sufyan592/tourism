@@ -21,6 +21,6 @@
   },
   "scripts": {
     "start": "node server.js",
-    "build": "netlify deploy --prod"
+    "build": "npm run build"
   }
 }
