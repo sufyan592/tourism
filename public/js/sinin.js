@@ -13,7 +13,8 @@ const signin = async (name, email, password, Cpassword, photo) => {
   try {
     const res = await axios({
       method: "POST",
-      url: "http://localhost:8000/api/v1/user/signin",
+      // url: "http://localhost:8000/api/v1/user/signin",
+      url: "/api/v1/user/signin",
       data: {
         name,
         email,

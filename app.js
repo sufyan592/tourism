@@ -9,6 +9,7 @@ const reviewRoute = require("./router/reviewRoute");
 const testRoute = require("./router/testRoute");
 const viewRoute = require("./router/viewRoute");
 const stripRoute = require("./router/stripeRoute");
+const serverless = require("serverless-http");
 
 app.use(express.json());
 app.use(cors());
@@ -29,3 +30,4 @@ app.use("/api/v1/review", reviewRoute);
 app.use("/api/v1/test", testRoute);
 
 module.exports = app;
+// module.exports.handler = serverless(app);

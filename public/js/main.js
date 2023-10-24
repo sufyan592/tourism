@@ -11,7 +11,8 @@ const login = async (email, password) => {
   try {
     const res = await axios({
       method: "POST",
-      url: "http://localhost:8000/api/v1/user/login",
+      // url: "http://localhost:8000/api/v1/user/login",
+      url: "/api/v1/user/login",
       data: {
         email,
         password,

@@ -17,8 +17,8 @@ const userData = async function (data, type) {
       method: "PATCH",
       url:
         type === "password"
-          ? "http://localhost:8000/api/v1/user/updateMyPassword"
-          : "http://localhost:8000/api/v1/user/updateMe",
+          ? "/api/v1/user/updateMyPassword"
+          : "/api/v1/user/updateMe",
       data: data,
     });
     if (res.data.status === "Success") {

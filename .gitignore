@@ -1,2 +1,2 @@
-[build]
-functions='js'
+node_modules/
+*.env

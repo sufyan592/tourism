@@ -743,4 +743,8 @@ i {
         gap: 5px;
     }
 
+    .maintext {
+        color: red;
+    }
+
 }

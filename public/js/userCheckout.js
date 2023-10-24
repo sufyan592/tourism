@@ -10,9 +10,7 @@ bookingBtn.addEventListener("click", (e) => {
 
 const checkReq = async (tourId) => {
   try {
-    const session = await axios(
-      `http://localhost:8000/booking-checkout/${tourId}`
-    );
+    const session = await axios(`/booking-checkout/${tourId}`);
     console.log(session);
     await session.rediretToCheckout({
       sessionId: session.data.session.id,
